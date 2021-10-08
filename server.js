@@ -44,4 +44,5 @@ router.get('/', (req, res) => {
 
 server.use('/api', router)
 
-server.listen(4545, () => console.log('Server started'))
+const port = process.env.PORT || '5000'
+server.listen(port, () => console.log('Server started'))
