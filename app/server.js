@@ -1,11 +1,10 @@
 const express = require('express')
 const {json, urlencoded} = require('body-parser')
-const cors = require('cors')
 const sqlite3 = require("sqlite3");
 const {Router} = require('express')
 
 const server = express()
-server.use(cors())
+
 server.use(json())
 server.use(urlencoded({extended: true}))
 
