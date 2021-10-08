@@ -14,9 +14,9 @@ const db = new sqlite3.Database('./database/score.db');
 db.run('CREATE TABLE IF NOT EXISTS score(time TEXT, location TEXT , point int)');
 
 router.post('/', (req, res) => {
-    const {point, location, date} = req.body
+    const {point, location, time} = req.body
     db.serialize(() => {
-        db.run('INSERT INTO score(time, location, point) VALUES(?,?,?)', [date, location, point], function (err) {
+        db.run('INSERT INTO score(time, location, point) VALUES(?,?,?)', [time, location, point], function (err) {
             if (err) {
                 return console.log(err.message);
             }
@@ -44,5 +44,5 @@ router.get('/', (req, res) => {
 server.use('/api', router)
 
 const port = process.env.PORT || '5000'
-server.listen(port, () => console.log('Server started'))
+server.listen(port, () => console.log('Server started', port))
 // server.listen(port, () => console.log('Server started'))
